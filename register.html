@@ -1,0 +1,23 @@
+<form id="loginForm">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button type="submit">Login</button>
+    <p id="loginMsg"></p>
+</form>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("loginEmail").value.trim();
+    let pass = document.getElementById("loginPassword").value.trim();
+    let msg = document.getElementById("loginMsg");
+
+    if(email === "" || pass === ""){
+        msg.innerHTML = "All fields are required!";
+        msg.style.color = "red";
+        return;
+    }
+
+    msg.innerHTML = "Login Successful!";
+    msg.style.color = "green";
+});
