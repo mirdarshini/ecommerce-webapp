@@ -7,3 +7,33 @@
     <button type="submit">Register</button>
     <p id="regMsg"></p>
 </form>
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let pass = document.getElementById("password").value.trim();
+    let cpass = document.getElementById("confirmPassword").value.trim();
+    let msg = document.getElementById("regMsg");
+
+    if(name === "" || email === "" || pass === "" || cpass === ""){
+        msg.innerHTML = "All fields are required!";
+        msg.style.color = "red";
+        return;
+    }
+
+    if(!email.includes("@")){
+        msg.innerHTML = "Enter a valid email!";
+        msg.style.color = "red";
+        return;
+    }
+
+    if(pass !== cpass){
+        msg.innerHTML = "Passwords do not match!";
+        msg.style.color = "red";
+        return;
+    }
+
+    msg.innerHTML = "Registration Successful!";
+    msg.style.color = "green";
+});
